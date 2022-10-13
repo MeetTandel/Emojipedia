@@ -21,7 +21,7 @@ export default function App() {
         let newData = data.map((data) => {
           let properties = {
             character: data.character,
-            unicodeName: data.unicodeName
+            meaning: data.unicodeName,
           };
           return properties;
         });
@@ -31,7 +31,7 @@ export default function App() {
 
   function handleClickEmoji(emoji) {
     setEmoji(emoji.character);
-    setMeaning(emoji.unicodeName);
+    setMeaning(emoji.meaning);
   }
 
   function handleEmojiChange(event) {
@@ -41,9 +41,10 @@ export default function App() {
     const findEmoji = emojiData.find((e) => e.character === inputEmoji);
     if (findEmoji) {
       setEmoji(findEmoji.character);
-      setMeaning(findEmoji.unicodeName);
+      setMeaning(findEmoji.meaning);
     } else {
-      setMeaning(meaning);
+      setEmoji("");
+      setMeaning("Emoji Not found");
     }
   }
   return (
@@ -55,25 +56,23 @@ export default function App() {
         placeholder={"Search your emoji"}
         style={{
           padding: "1em",
-          minWidth: "70%"
+          minWidth: "70%",
         }}
       />
       <h2>{emoji}</h2>
       <h3>{meaning}</h3>
       <div className="emoji-container">
-        {emojiData !== undefined &&
-          emojiData
-            .filter((item, i) => i < 200)
-            .map((emoji, i) => (
-              <span
-                className="emoji-content"
-                onClick={() => handleClickEmoji(emoji)}
-                key={i}
-              >
-                {console.log(emoji)}
-                {emoji.character}
-              </span>
-            ))}
+        {emojiData
+          ?.filter((item, i) => i < 200)
+          .map((emoji, i) => (
+            <span
+              className="emoji-content"
+              onClick={() => handleClickEmoji(emoji)}
+              key={i}
+            >
+              {emoji.character}
+            </span>
+          ))}
       </div>
     </div>
   );

@@ -2,7 +2,7 @@
 
 This is an emoji translator. Made with React and React Hooks, this will give you the meaning of emoji on clicking and searching it.
 
-#### Live Project [https://qye0t.csb.app/](https://qye0t.csb.app/)
+#### Live Project [https://emojipedia-meet.netlify.app/](https://emojipedia-meet.netlify.app/)
 
 ## How to Use
 
